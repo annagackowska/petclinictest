@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:InputTestData xmlns:ns2="urn:org:easetech:easytest:1.0">
+    <TestMethod name="addNewOwnerTest">
+        <Description>Different User Registration Tests
+        </Description>
+
+        <TestRecord id="1">
+            <Description>Owner 1</Description>
+            <InputData>
+                <Entry key="firstName" value="Jan" />
+                <Entry key="lastName" value="Krzak" />
+                <Entry key="address" value="Zeusa 8" />
+                <Entry key="city" value="Gdansk" />
+                <Entry key="telephone" value="555444333" />
+            </InputData>
+        </TestRecord>
+
+        <TestRecord id="2">
+            <Description>Owner 2</Description>
+            <InputData>
+                <Entry key="firstName" value="Basia" />
+                <Entry key="lastName" value="Krzak" />
+                <Entry key="address" value="Zeusa 8" />
+                <Entry key="city" value="Gdansk" />
+                <Entry key="telephone" value="555444222" />
+            </InputData>
+        </TestRecord>
+
+        <TestRecord id="3">
+            <Description>Owner 3</Description>
+            <InputData>
+                <Entry key="firstName" value="Zosia" />
+                <Entry key="lastName" value="Krzak" />
+                <Entry key="address" value="Zeusa 8" />
+                <Entry key="city" value="Gdansk" />
+                <Entry key="telephone" value="555444111" />
+            </InputData>
+        </TestRecord>
+    </TestMethod>
+</ns2:InputTestData>
