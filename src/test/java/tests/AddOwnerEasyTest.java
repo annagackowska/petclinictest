@@ -44,6 +44,8 @@ public class AddOwnerEasyTest {
 
         driver.manage().window().maximize();
 
+        driver.manage().timeouts().pageLoadTimeout(4,TimeUnit.SECONDS);
+
         homePage = PageFactory.initElements(driver, HomePage.class);
         findPage = PageFactory.initElements(driver,FindPage.class);
         newOwnerPage = PageFactory.initElements(driver,NewOwnerPage.class);
@@ -60,8 +62,6 @@ public class AddOwnerEasyTest {
                                  @Param(name = "city") String city,
                                  @Param(name = "telephone") String telephone) {
 
-
-        driver.manage().timeouts().pageLoadTimeout(4,TimeUnit.SECONDS);
             findPage.clickOnAddOwnerButton();
             newOwnerPage.inputOwnerInformation(firstName, lastName, address, city,telephone);
 
