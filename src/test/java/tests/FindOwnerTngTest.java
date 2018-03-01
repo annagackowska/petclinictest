@@ -16,12 +16,10 @@ import pages.OwnerInformationPage;
 import utils.drivers.WebDriverCreators;
 import utils.drivers.WebDriverProvider;
 
-
-
-public class AddOwnerTngTech {
+public class FindOwnerTngTest {
 
     @RunWith(DataProviderRunner.class)
-    public static class AddNewOwner {
+    public static class FindOwner {
 
         private static final String URL = "http://localhost:8080/owners/find";
 
@@ -33,11 +31,11 @@ public class AddOwnerTngTech {
 
 
         @DataProvider
-        public static Object[][] testAddNewOwner() {
+        public static Object[][] testFindOwner() {
             return new String[][]{
-                new String[]{"Jan", "Kowalski", "Jabloniowa 3", "Gdansk", "555555555", "Jan Kowalski"},
-                new String[]{"Ada", "Kruk", "Jabloniowa 4", "Gdynia", "111222333", "Ada Kruk"},
-                new String[]{"Tom", "Kret", "Hery 1", "Sopot", "333444555", "Tom Kret"},
+                new String[]{"Franklin", "George Franklin"},
+                new String[]{"Rodriquez", "Eduardo Rodriquez"},
+                new String[]{"McTavish", "Peter McTavish"},
             };
         }
 
@@ -57,14 +55,12 @@ public class AddOwnerTngTech {
         }
 
         @Test
-        @UseDataProvider("testAddNewOwner")
-        public void addNewOwner(String firstName, String lastName, String address, String city, String telephone, String nameField) {
+        @UseDataProvider("testFindOwner")
+        public void findOwner(String lastName, String nameField) {
 
-            findPage.clickOnAddOwnerButton();
+            findPage.inputOwnerInformation(lastName);
 
-            newOwnerPage.inputOwnerInformation(firstName, lastName, address, city,telephone);
-
-            newOwnerPage.clickOnNewOwnerButton();
+            findPage.clickOnFindOwnerButton();
 
             Assertions.assertThat(ownerInformationPage.getNameMessage()).contains(nameField);
 
@@ -77,3 +73,4 @@ public class AddOwnerTngTech {
 
     }
 }
+

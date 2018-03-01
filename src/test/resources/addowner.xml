@@ -12,6 +12,7 @@
                 <Entry key="address" value="Zeusa 8" />
                 <Entry key="city" value="Gdansk" />
                 <Entry key="telephone" value="555444333" />
+                <Entry key="nameField" value="Jan Krzak"/>
             </InputData>
         </TestRecord>
 
@@ -23,6 +24,7 @@
                 <Entry key="address" value="Zeusa 8" />
                 <Entry key="city" value="Gdansk" />
                 <Entry key="telephone" value="555444222" />
+                <Entry key="nameField" value="Basia Krzak"/>
             </InputData>
         </TestRecord>
 
@@ -34,6 +36,7 @@
                 <Entry key="address" value="Zeusa 8" />
                 <Entry key="city" value="Gdansk" />
                 <Entry key="telephone" value="555444111" />
+                <Entry key="nameField" value="Zosia Krzak"/>
             </InputData>
         </TestRecord>
     </TestMethod>

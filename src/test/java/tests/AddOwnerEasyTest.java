@@ -1,6 +1,7 @@
 package tests;
 
 
+import org.assertj.core.api.Assertions;
 import org.easetech.easytest.annotation.DataLoader;
 import org.easetech.easytest.annotation.Param;
 import org.easetech.easytest.loader.LoaderType;
@@ -12,15 +13,12 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import pages.FindPage;
-import pages.HomePage;
 import pages.NewOwnerPage;
 import pages.OwnerInformationPage;
 import utils.drivers.WebDriverCreators;
 import utils.drivers.WebDriverProvider;
 
-import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertNotEquals;
 
 @RunWith(DataDrivenTestRunner.class)
 @DataLoader(filePaths = { "src/test/resources/addowner.xml" }, loaderType = LoaderType.XML, writeData = false)
@@ -28,11 +26,9 @@ import static org.junit.Assert.assertNotEquals;
 public class AddOwnerEasyTest {
 
     private static final String URL = "http://localhost:8080/owners/find";
-    private static final String URL_ADD_OWNER = "http://localhost:8080/owners/new";
 
     private WebDriver driver;
 
-    private HomePage homePage;
     private FindPage findPage;
     private NewOwnerPage newOwnerPage;
     private OwnerInformationPage ownerInformationPage;
@@ -44,9 +40,6 @@ public class AddOwnerEasyTest {
 
         driver.manage().window().maximize();
 
-        driver.manage().timeouts().pageLoadTimeout(4,TimeUnit.SECONDS);
-
-        homePage = PageFactory.initElements(driver, HomePage.class);
         findPage = PageFactory.initElements(driver,FindPage.class);
         newOwnerPage = PageFactory.initElements(driver,NewOwnerPage.class);
         ownerInformationPage = PageFactory.initElements(driver, OwnerInformationPage.class);
@@ -60,14 +53,15 @@ public class AddOwnerEasyTest {
                                  @Param(name = "lastName") String lastName,
                                  @Param(name = "address") String address,
                                  @Param(name = "city") String city,
-                                 @Param(name = "telephone") String telephone) {
+                                 @Param(name = "telephone") String telephone,
+                                 @Param(name = "nameField") String nameField) {
 
             findPage.clickOnAddOwnerButton();
             newOwnerPage.inputOwnerInformation(firstName, lastName, address, city,telephone);
 
             newOwnerPage.clickOnNewOwnerButton();
 
-    assertNotEquals("strona po dodaniu", URL_ADD_OWNER, driver.getCurrentUrl());
+        Assertions.assertThat(ownerInformationPage.getNameMessage()).contains(nameField);
 
 }
 

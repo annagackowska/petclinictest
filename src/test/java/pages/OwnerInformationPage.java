@@ -9,25 +9,11 @@ import java.util.List;
 
 public class OwnerInformationPage {
 
+    @FindBy(xpath = "//table[@class='table table-striped']//tbody//tr//td//b")
+    WebElement nameField;
 
-    @FindBy(xpath = "//table[@id='vets']//tbody")
-    WebElement ownerTable;
-
-    public String containsUser() {
-        return ownerTable.getText();
+    public String getNameMessage() {
+        return nameField.getText();
     }
 
-    public String containsOfOwnerTable() {
-
-        List<WebElement> rows = ownerTable.findElements(By.tagName("tr"));
-
-        for (WebElement row : rows) {
-
-            List<WebElement> cols = row.findElements(By.tagName("td"));
-            for (WebElement col : cols) {
-                return (col.getText());
-            }
-        }
-        return (ownerTable.getText());
-    }
 }

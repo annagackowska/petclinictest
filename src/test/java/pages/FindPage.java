@@ -11,8 +11,18 @@ public class FindPage {
     @FindBy(xpath = "//input[@id='lastName']")
     WebElement lastNameField;
 
+    @FindBy(xpath = "//button[@type='submit']")
+    WebElement findOwnerButton;
+
     public void clickOnAddOwnerButton() {addOwnerButton.click();}
     public void sendNameField(){lastNameField.sendKeys();}
+
+    public void clickOnFindOwnerButton() {findOwnerButton.click();}
+
+    @FindBy(xpath = "//table[@class='table table-striped']//tbody//tr//td//b")
+    WebElement nameField;
+
+    public void inputOwnerInformation(String lastName) { lastNameField.sendKeys(lastName); }
 
 
 }
